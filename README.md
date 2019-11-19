@@ -1,6 +1,6 @@
 # vscode_snippets
 A place to store my VSCode snippets
 
-#Current Languages
+# Current Languages
 
->Javascript for Node
+## Javascript for Node
