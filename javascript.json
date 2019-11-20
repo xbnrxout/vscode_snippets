@@ -1,8 +1,8 @@
-{
-	"require":{
+"require":{
 		"prefix": "req",
 		"body": [
-			"const $1 = require('$2');"
+			"const {$1} = require('$1');",
+			"$0"
 		],
 		"description": "node.js require"
 	},
@@ -10,7 +10,7 @@
 		"prefix": "erb",
 		"body": [
 			"if(err){",
-			"\tconsole.log('$1');",
+			"\tconsole.log('$0');",
 			"}$2"
 		],
 		"description": "js standard error block"
@@ -18,11 +18,49 @@
 	"MongoDB Collection find":{
 		"prefix": "mfc",
 		"body": [
-			"db.collection('$1').find$2({ $3 }, (error, $4) => {",
-			"\t$5",
+			"db.collection('$1').find({ $2 : $3 }).$4((error, $5) => {",
+			"\t$0",
 			"});"
 		],
 		"description": "js mongodb find"
+	},"MongoDB Collection findOne":{
+		"prefix": "mfcfo",
+		"body": [
+			"db.collection('$1').findOne({ $2 : $3},(error, $4)=>{",
+			"\t$0",
+			"});"
+		],
+		"description": "js mongodb findOne"
+	},"MongoDB Collection":{
+		"prefix": "mc",
+		"body": [
+			"db.collection('$1')."
+		],
+		"description": "js mongodb collection"
+	},"MongoDB Collection updateOne":{
+		"prefix": "muo",
+		"body": [
+			"db.collection('$1').updateOne({",
+			"\t",
+			"},{",
+			"\t$set: {",
+			"\t\t$3",
+			"\t}",
+			"});"
+		],
+		"description": "js mongodb collection updateOne"
+	},"MongoDB":{
+		"prefix": "mdb",
+		"body": [
+			"db.collection('$1')$0"
+		],
+		"description": "js mongodb collection updateOne"
+	},"MongoDB ID":{
+		"prefix": "mid",
+		"body": [
+			"_id: new ObjectID($0)"
+		],
+		"description": "js mongodb new ObjectID"
 	},
 	"JS console.log with string":{
 		"prefix": "cons",
@@ -37,5 +75,24 @@
 			"console.log($0);"
 		],
 		"description": "JS console.log with empty param"
+	},
+	"Empty Arrow Functon":{
+		"prefix": "arrf",
+		"body": [
+			"($1) => {",
+			"\t$0",
+			"}"
+		],
+		"description": "JS arrow function"
+	},
+	"Empty Promise":{
+		"prefix": "prom",
+		"body": [
+			"$1.then(($2) =>{",
+			"\t",
+			"}).catch(($3)=>{",
+			"\t",
+			"});"
+		],
+		"description": "JS arrow function"
 	}
-}
